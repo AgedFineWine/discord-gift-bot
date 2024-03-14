@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 const { exec } = require('child_process');
-const keepAlive = require('../keep_alive/keepAlive.js');
+const keepAlive = require('../keep_alive/keepAlive');
 
 const client = new Client({
     intents: [
@@ -25,7 +25,7 @@ function runPythonScript(scriptPath, interaction) {
     exec(`python ${scriptPath}`, (error, stdout) => {
         if (error) {
             console.error(`Error executing Python script: ${error.message}`);
-            interaction.reply(`Bruh 💀`);
+            interaction.reply(`Bruh 💀: ${error.message}`);
             return;
         }
         interaction.reply(stdout);
