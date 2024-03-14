@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 const { exec } = require('child_process');
+const keepAlive = require('../keep_alive/keepAlive.js');
 
 const client = new Client({
     intents: [
@@ -46,4 +47,5 @@ client.on('interactionCreate', (interaction) => {
     }
 });
 
+keepAlive();
 client.login(process.env.BotToken);
